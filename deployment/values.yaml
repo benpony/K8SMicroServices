@@ -24,6 +24,13 @@ livenessProbe:
   initialDelaySeconds: 3
   periodSeconds: 3
   failureThreshold: 2
+readinessProbe: 
+  httpGet:
+    path: /health-check
+    port: 8080
+  initialDelaySeconds: 3
+  periodSeconds: 3
+  failureThreshold: 2
 
 serviceAccount:
   # Specifies whether a service account should be created
