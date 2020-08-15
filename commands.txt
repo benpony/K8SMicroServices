@@ -1,0 +1,22 @@
+$ minikube delete
+$ minikube start --vm-driver=virtualbox --memory 4096 --cpus 2
+$ minikube addons enable ingress
+
+- - -
+
+$ docker build -t benpony/node-web-app . && \
+  docker push benpony/node-web-app:latest
+
+deployment/ 
+$ helm upgrade --install nodejs-ingressed-app1 .
+..
+https://nodejs-chart-example.local/app1
+
+
+# assert existance of mapping between minikube ip to application published domain
+$ cat /etc/hosts
+..
+$(minikube ip) nodejs-chart-example.local
+..
+$ sudo vim /etc/hosts
+..
